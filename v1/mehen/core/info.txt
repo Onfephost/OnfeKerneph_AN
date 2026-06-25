@@ -1,0 +1,1 @@
+This core is Ai's core. So we can create new agent with this core.
