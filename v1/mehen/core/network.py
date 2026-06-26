@@ -58,12 +58,12 @@ class Network:
         result = emb[:]
         for i in range(self.dim):
             if i % 2 == 0:
-                result[i] += math.sin(pos /(10000 ** (i / self.dim)))
+                result[i] += math.sin(pos /(100000 ** (i / self.dim)))
             else:
 
                 result[i] += math.cos(
                     pos /
-                    (10000 ** ((i - 1) / self.dim))
+                    (100000 ** ((i - 1) / self.dim))
                 )
         return result
 
@@ -170,7 +170,7 @@ class Network:
         
         # Embedding update
         for idx in seq_ids:
-            self.embed.update(idx,emb_grad,self.lr *0.1)
+            self.embed.update(idx,emb_grad,self.lr)
         return loss
 
     def train(self,data,epochs=2000,step=100):
@@ -188,7 +188,7 @@ class Network:
             bar = "#" * progress
             print(
                 f"\r[{bar:<50}] "
-                f"%{round(epoch/epochs*100)} "
+                f"%{math.floor(epoch/epochs*100)} "
                 f"epoch:{epoch} "
                 f"loss:{round(total,4)}",
                 end="",

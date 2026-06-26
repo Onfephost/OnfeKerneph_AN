@@ -10,4 +10,4 @@ def dot(a, b):
     return sum(x*y for x, y in zip(a, b))
 
 def cross_entropy(probs, target):
-    return -math.log(max(probs[target], 1e-10))
+    return -math.log(max(probs[target], 1e-9))

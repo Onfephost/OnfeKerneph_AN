@@ -82,8 +82,8 @@ data = [
 # MODEL
 def createModel(vocab_size):
     net = Network(vocab_size=vocab_size,
-    dim=32,lr=0.005,
-    ff_hidden=64,)
+    dim=64,lr=0.005,
+    ff_hidden=128,)
 
     print("=== TRAINING ===")
 
@@ -96,7 +96,7 @@ def createModel(vocab_size):
     return net
     
 def startModel(net):
-    print("=== ===")
+    print("===Run===")
 
     while True:
         text = input("-> ").strip().lower()
@@ -118,5 +118,5 @@ def startModel(net):
 
 if __name__ == "__main__":
     net = createModel(vocab_size)
-    startModel(net)
+
     
