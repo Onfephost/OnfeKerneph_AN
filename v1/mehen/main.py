@@ -79,6 +79,9 @@ data = [
 ]
 
 
+
+
+
 # MODEL
 def createModel(vocab_size):
     net = Network(vocab_size=vocab_size,

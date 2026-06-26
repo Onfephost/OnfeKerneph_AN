@@ -148,15 +148,18 @@ class Network:
                 )
         grad_hidden = [0.0] * self.ff_hidden
         
-        for h in range(self.ff_hidden):
-            for d in range(self.dim):
-                self.ff2[h][d] -= (self.lr * hidden[h] * grad_last[d])            
-        
+ # DÜZELTME — sırayı tersine çevir
+ # Önce grad_hidden hesapla
         for h in range(self.ff_hidden):
             for d in range(self.dim):
                 grad_hidden[h] += (grad_last[d] * self.ff2[h][d])
             if hidden[h] <= 0:
                 grad_hidden[h] = 0
+
+                         # Sonra ff2'yi güncelle
+        for h in range(self.ff_hidden):
+            for d in range(self.dim):
+                self.ff2[h][d] -= (self.lr * hidden[h] * grad_last[d])
                 
         for i in range(len(grad_hidden)):
             if grad_hidden[i] > 1.0:
