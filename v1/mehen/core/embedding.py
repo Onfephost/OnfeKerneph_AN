@@ -7,7 +7,7 @@ class Embedding:
         self.table = [[random.uniform(-0.5, 0.5) for _ in range(dim)]for _ in range(vocab_size)]
 
     def forward(self, idx):
-        return self.table[idx]
+        return self.table[idx].copy()
 
     def update(self, idx, grad, lr):
         for i in range(self.dim):
