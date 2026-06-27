@@ -60,11 +60,7 @@ class Network:
             if i % 2 == 0:
                 result[i] += math.sin(pos /(100000 ** (i / self.dim)))
             else:
-
-                result[i] += math.cos(
-                    pos /
-                    (100000 ** ((i - 1) / self.dim))
-                )
+                result[i] += math.cos(pos /(100000 ** ((i - 1) / self.dim)))
         return result
 
     def feed_forward(self, vec):
@@ -141,26 +137,22 @@ class Network:
         # Output update
         for k in range(self.vocab):
             for d in range(self.dim):
-                self.output[k][d] -= (
-                    self.lr *
-                    grad[k] *
-                    last[d]
-                )
+                self.output[k][d] -= (self.lr * grad[k] * last[d])
         grad_hidden = [0.0] * self.ff_hidden
         
- # DÜZELTME — sırayı tersine çevir
- # Önce grad_hidden hesapla
+        # DÜZELTME — sırayı tersine çevir
+        # Önce grad_hidden hesapla
+        
         for h in range(self.ff_hidden):
             for d in range(self.dim):
                 grad_hidden[h] += (grad_last[d] * self.ff2[h][d])
             if hidden[h] <= 0:
                 grad_hidden[h] = 0
 
-                         # Sonra ff2'yi güncelle
+        # Sonra ff2'yi güncelle
         for h in range(self.ff_hidden):
             for d in range(self.dim):
                 self.ff2[h][d] -= (self.lr * hidden[h] * grad_last[d])
-                
         for i in range(len(grad_hidden)):
             if grad_hidden[i] > 1.0:
                 grad_hidden[i] = 1.0
@@ -179,6 +171,8 @@ class Network:
     def train(self,data,epochs=2000,step=100):
         logs = []
         summ = []
+        losss = []
+        m =0.0
         tot = 0
         width = len(str(epochs))
         for epoch in range(epochs):
@@ -194,14 +188,20 @@ class Network:
                 f"%{math.floor(epoch/epochs*100)} "
                 f"epoch:{epoch} "
                 f"loss:{round(total,4)}",
+                f"plusmod:{round(m,5)}",
                 end="",
-                flush=True
+                flush=True,
             )
+            losss.append(total)
+            if min(losss) <= total:
+                if (total - min(losss)) >m:
+                    m = (total - min(losss))
 
             if epoch % step == 0:
                 logs.append(
                     f"epoch:{epoch:<{width}} "
-                    f"loss:{round(total,4)}"
+                    f"loss:{round(total,5)} "
+                    f"plusmod:{round(m,5)}"
                 )
 
         print("\n")

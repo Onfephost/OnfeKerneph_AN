@@ -38,6 +38,4 @@ def startModel(net):
             seq = encode(generated)
 
 if __name__ == "__main__":
-    net = createModel(vocab_size)
-
-    
+    net = createModel(vocab_size,s=1)
