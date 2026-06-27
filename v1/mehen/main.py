@@ -9,7 +9,7 @@ def createModel(vocab_size,epochCount=2000,s=100):
     print("=== TRAINING ===")
 
     loss = net.train(data,
-    epochs=epochCount,
+    epochs=epochCount+1,
     step=s,
     )
 
