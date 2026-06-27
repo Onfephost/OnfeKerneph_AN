@@ -2,10 +2,13 @@ words = [
     "how","are","you","hi","hello","ai","i","am","they","we",
     "what","is","your","name","my","good","bad","fine","thanks",
     "who","and","or","milk","coffee","tea","with","esc","where",
+    "say","says","tell","tells","said","have","has","he","she","it",
+    "cold","hot",
 ]
 numbers = list(range(0,len(words)))
 word2id = {a:b for a,b in zip(words,numbers)}
-
+if __name__ == "__main__":
+    print(word2id)
 id2word = {v: k for k, v in word2id.items()}
 vocab_size = len(word2id)
 
@@ -81,6 +84,12 @@ data = [
     ([24],25),
     ([24,25],22),
     ([24,25,22],26),
+    # i have said
+    ([6,33],32),
+    ([6,33,32],26),
+    #coffee is hot
+    ([23,11],39),
+    ([23,11,39],26)
 ]
 
 

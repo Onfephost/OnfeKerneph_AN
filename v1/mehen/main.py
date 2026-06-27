@@ -6,7 +6,7 @@ def createModel(vocab_size,epochCount=2000,s=100):
     dim=64,lr=0.005,
     ff_hidden=128,)
 
-    print("=== TRAINING ===")
+    print("=== Training ===")
 
     loss = net.train(data,
     epochs=epochCount+1,
@@ -28,7 +28,7 @@ def startModel(net):
             print("Unknown input")
             continue
         generated = text
-        for _ in range(20):
+        for _ in range(200):
             pred = net.predict(seq)
             word = id2word[pred]
             if word == "esc":
