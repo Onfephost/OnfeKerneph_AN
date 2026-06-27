@@ -1,7 +1,7 @@
 words = [
     "how","are","you","hi","hello","ai","i","am","they","we",
     "what","is","your","name","my","good","bad","fine","thanks",
-    "who","esc",
+    "who","esc","and","or","milk","coffee","tea","with",
 ]
 numbers = list(range(0,len(words)))
 word2id = {a:b for a,b in zip(words,numbers)}
@@ -73,6 +73,14 @@ data = [
     ([19], 1),
     ([19,1], 2),
     ([19,1,2], 20),
+    #coffee or tea
+    ([24],22),
+    ([24,22],25),
+    ([24,22,25],20),
+    #tea with milk
+    ([25],26),
+    ([25,26],23),
+    ([25,26,23],20),
 ]
 
 
