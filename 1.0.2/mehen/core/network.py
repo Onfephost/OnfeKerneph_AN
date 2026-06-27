@@ -171,8 +171,13 @@ class Network:
     def train(self,data,epochs=2000,step=100):
         logs = []
         summ = []
+<<<<<<< HEAD
         losss = []
         m =0.0
+=======
+        ls = []
+        m = 0.0
+>>>>>>> fd59936 (	modified:   1.0.2/mehen/__pycache__/train_datas.cpython-312.pyc)
         tot = 0
         width = len(str(epochs))
         for epoch in range(epochs):
@@ -188,10 +193,15 @@ class Network:
                 f"%{math.floor(epoch/epochs*100)} "
                 f"epoch:{epoch} "
                 f"loss:{round(total,4)}",
+<<<<<<< HEAD
                 f"plusmod:{round(m,5)}",
+=======
+                f"plusmod:{round(m,4)}"
+>>>>>>> fd59936 (	modified:   1.0.2/mehen/__pycache__/train_datas.cpython-312.pyc)
                 end="",
                 flush=True,
             )
+<<<<<<< HEAD
             losss.append(total)
             if min(losss) <= total:
                 if (total - min(losss)) >m:
@@ -202,6 +212,16 @@ class Network:
                     f"epoch:{epoch:<{width}} "
                     f"loss:{round(total,5)} "
                     f"plusmod:{round(m,5)}"
+=======
+            ls.append(total)
+            if min(ls) < total:
+                m = (total - min(ls))
+            if epoch % step == 0:
+                logs.append(
+                    f"epoch:{epoch:<{width}} "
+                    f"loss:{round(total,4)}"
+                    f"plusmod:{round(m,4)}"
+>>>>>>> fd59936 (	modified:   1.0.2/mehen/__pycache__/train_datas.cpython-312.pyc)
                 )
 
         print("\n")
