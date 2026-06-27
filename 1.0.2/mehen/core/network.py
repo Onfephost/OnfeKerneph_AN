@@ -180,7 +180,7 @@ class Network:
         for epoch in range(epochs):
             total = 0.0
             for seq, target in data:
-                total += self.train_step(seq,target)     
+                total += self.train_step(seq,target)
             tot = total
             summ.append(total)
             progress = int(epoch / epochs * 50)
@@ -197,7 +197,7 @@ class Network:
 
             losss.append(total)
             if min(losss) <= total:
-                if (total - min(losss)) >m:
+                if (total - min(losss)) > m:
                     m = (total - min(losss))
 
             if epoch % step == 0:

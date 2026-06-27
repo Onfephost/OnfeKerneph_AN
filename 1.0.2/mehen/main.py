@@ -4,7 +4,7 @@ from train_datas import vocab_size,data,encode,id2word
 def createModel(vocab_size,epochCount=2000,s=100):
     net = Network(vocab_size=vocab_size,
     dim=64,lr=0.005,
-    ff_hidden=128,)
+    ff_hidden=64,)
 
     print("=== Training ===")
 
