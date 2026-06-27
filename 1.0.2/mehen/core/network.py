@@ -205,6 +205,7 @@ class Network:
                     f"epoch:{epoch:<{width}} "
                     f"loss:{round(total,5)} "
                     f"plusmod:{round(m,5)}"
+                )
 
             ls.append(total)
             if min(ls) < total:
@@ -214,8 +215,8 @@ class Network:
                     f"epoch:{epoch:<{width}} "
                     f"loss:{round(total,4)}"
                     f"plusmod:{round(m,4)}"
->>>>>>> fd59936 (	modified:   1.0.2/mehen/__pycache__/train_datas.cpython-312.pyc)
                 )
+                
 
         print("\n")
         print("\n".join(logs))
