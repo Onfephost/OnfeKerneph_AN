@@ -1,10 +1,10 @@
 from core.network import Network
 from train_datas import vocab_size,data,encode,id2word
 
-def createModel(vocab_size,epochCount=2000,s=100):
+def createModel(vocab_size,data,epochCount=2000,s=100):
     net = Network(vocab_size=vocab_size,
     dim=64,lr=0.005,
-    ff_hidden=64,)
+    ff_hidden=128,)
 
     print("=== Training ===")
 
@@ -38,4 +38,4 @@ def startModel(net):
             seq = encode(generated)
 
 if __name__ == "__main__":
-    net = createModel(vocab_size,s=1)
+    net = createModel(vocab_size,data=data,s=1)

@@ -171,8 +171,6 @@ class Network:
     def train(self,data,epochs=2000,step=100):
         logs = []
         summ = []
-        losss = []
-        m =0.0
         ls = []
         m = 0.0
         tot = 0
@@ -195,11 +193,6 @@ class Network:
                 flush=True,
             )
 
-            losss.append(total)
-            if min(losss) <= total:
-                if (total - min(losss)) > m:
-                    m = (total - min(losss))
-
             if epoch % step == 0:
                 logs.append(
                     f"epoch:{epoch:<{width}} "
@@ -209,11 +202,12 @@ class Network:
 
             ls.append(total)
             if min(ls) < total:
-                m = (total - min(ls))
+                if (total - min(ls)) > m:
+                    m = (total - min(ls))
             if epoch % step == 0:
                 logs.append(
                     f"epoch:{epoch:<{width}} "
-                    f"loss:{round(total,4)}"
+                    f"loss:{round(total,4)} "
                     f"plusmod:{round(m,4)}"
                 )
                 
