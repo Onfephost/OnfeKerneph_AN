@@ -2,8 +2,11 @@ from core.network import Network
 from train_datas import vocab_size,data,encode,id2word
 
 def createModel(vocab_size,data,epochCount=2000,s=100):
+    import os
+    os.system("clear")
+    print("=== Create Model ===")
     net = Network(vocab_size=vocab_size,
-    dim=64,lr=0.005,
+    dim=128,lr=0.01,
     ff_hidden=128,)
 
     print("=== Training ===")
@@ -17,7 +20,9 @@ def createModel(vocab_size,data,epochCount=2000,s=100):
     return net
     
 def startModel(net):
-    print("===Run===")
+    import os
+    os.system("clear")
+    print("=== Run ===")
 
     while True:
         text = input("-> ").strip().lower()
