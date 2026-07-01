@@ -129,10 +129,7 @@ class Network:
         emb_grad = [0.0] * self.dim
         for k in range(self.vocab):
             for d in range(self.dim):
-                emb_grad[d] += (
-                    grad[k] *
-                    self.output[k][d]
-                )
+                emb_grad[d] += (grad[k] * self.output[k][d])
 
         # Output update
         for k in range(self.vocab):
